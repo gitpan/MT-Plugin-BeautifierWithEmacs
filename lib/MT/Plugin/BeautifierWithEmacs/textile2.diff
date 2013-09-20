@@ -1,0 +1,52 @@
+--- a/plugins/Textile/textile2.pl
++++ b/plugins/Textile/textile2.pl
+@@ -23,7 +23,7 @@ use MT;
+ use base qw( MT::Plugin );
+ 
+ our $VERSION = 2.05;
+-our ( $_initialized, $Have_SmartyPants );
++our ( $_initialized );
+ 
+ MT->add_plugin(
+     __PACKAGE__->new(
+@@ -61,7 +61,6 @@ MT->add_plugin(
+ sub _init {
+     require Text::Textile;
+     @MT::Textile::ISA = qw(Text::Textile);
+-    $Have_SmartyPants = defined &SmartyPants::SmartyPants ? 1 : 0;
+     $_initialized     = 1;
+ }
+ 
+@@ -174,21 +173,8 @@ sub _highlight {
+     $tagopen .= $attr1 if defined $attr1;
+     $tagopen .= $attr2 if defined $attr2;
+     $tagopen .= '>';
+-    if ( $lang =~ m/perl/i ) {
+-        $code = Voisen::CodeBeautifier::highlight_perl($code);
+-    }
+-    elsif ( $lang =~ m/php/i ) {
+-        $code = Voisen::CodeBeautifier::highlight_php3($code);
+-    }
+-    elsif ( $lang =~ m/java/i ) {
+-        $code = Voisen::CodeBeautifier::highlight_java($code);
+-    }
+-    elsif ( ( $lang =~ m/actionscript/i ) || ( $lang =~ m/as/i ) ) {
+-        $code = Voisen::CodeBeautifier::highlight_as($code);
+-    }
+-    elsif ( $lang =~ m/scheme/i ) {
+-        $code = Voisen::CodeBeautifier::highlight_scheme($code);
+-    }
++    $lang =~ /(\w+)/;
++    $code = Voisen::CodeBeautifier::highlight($code, $1) if $1;
+     $code =~ s!^<pre>!!;
+     $code =~ s!</pre>$!!;
+     return $tagopen . $code . '</' . $tag . '>';
+@@ -268,7 +254,7 @@ sub process_quotes {
+     my $self = shift;
+     my ($str) = @_;
+     return $str unless $self->{do_quotes};
+-    if ($plugins::textile2::Have_SmartyPants) {
++    if (defined &SmartyPants::SmartyPants) {
+         $str = SmartyPants::SmartyPants( $str, $self->{smarty_mode} );
+     }
+     $str;

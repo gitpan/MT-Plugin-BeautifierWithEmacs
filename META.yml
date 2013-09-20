@@ -1,0 +1,23 @@
+---
+abstract: 'plug-in for Movable Type to use Syntax::Highlight::WithEmacs'
+author:
+  - 'Ailin Nemui <ailin at devio dot us>'
+build_requires:
+  Test::More: 0
+  if: 0
+  lib: 0
+  strict: 0
+  warnings: 0
+configure_requires:
+  ExtUtils::MakeMaker: 6.30
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 4.300038, CPAN::Meta::Converter version 2.131560'
+license: gpl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: MT-Plugin-BeautifierWithEmacs
+no_index:
+  namespace:
+    - Voisen
+version: 0.1
