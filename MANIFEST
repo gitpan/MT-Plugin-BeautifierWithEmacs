@@ -4,7 +4,7 @@ META.yml
 Makefile.PL
 README
 dist.ini
-lib/MT/Plugin/BeautifierWithEmacs.pod
+lib/MT/Plugin/BeautifierWithEmacs.pm
 lib/MT/Plugin/BeautifierWithEmacs/beautifier.pl
 lib/MT/Plugin/BeautifierWithEmacs/textile2.diff
 t/testsome.t

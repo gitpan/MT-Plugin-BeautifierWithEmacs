@@ -19,7 +19,10 @@ my %WriteMakefileArgs = (
   "EXE_FILES" => [],
   "LICENSE" => "gpl",
   "NAME" => "MT::Plugin::BeautifierWithEmacs",
-  "PREREQ_PM" => {},
+  "PREREQ_PM" => {
+    "CGI" => 0,
+    "Syntax::Highlight::WithEmacs" => 0
+  },
   "TEST_REQUIRES" => {
     "Test::More" => 0,
     "if" => 0,
@@ -27,7 +30,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.1",
+  "VERSION" => "0.2",
   "test" => {
     "TESTS" => "t/*.t"
   }

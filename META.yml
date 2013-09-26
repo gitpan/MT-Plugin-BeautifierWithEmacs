@@ -20,4 +20,7 @@ name: MT-Plugin-BeautifierWithEmacs
 no_index:
   namespace:
     - Voisen
-version: 0.1
+requires:
+  CGI: 0
+  Syntax::Highlight::WithEmacs: 0
+version: 0.2
